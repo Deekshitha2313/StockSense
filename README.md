@@ -1,8 +1,8 @@
-# StockSense — Modern Inventory Management System
+# 📊 StockSense — Modern Inventory Management System
 
 StockSense is an enterprise-grade, real-time Inventory Management System designed as a high-performance **modular monolith**. It eliminates manual paper registers, scattered spreadsheets, and inventory drift with strict **double-entry ledger accounting**, automated low-stock alerting, and warehouse topology tracking.
 
----
+-----
 
 ## 🌟 Key Architecture & Technical Highlights
 
