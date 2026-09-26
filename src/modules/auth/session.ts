@@ -2,8 +2,9 @@ import { cookies } from 'next/headers';
 import { AuthService } from './service';
 import { UserSession } from '@/types';
 import { redirect } from 'next/navigation';
+import { SESSION_COOKIE_NAME } from './constants';
 
-export const SESSION_COOKIE_NAME = 'stocksense_session';
+export { SESSION_COOKIE_NAME };
 
 export async function getServerSession(): Promise<UserSession | null> {
   const cookieStore = cookies();

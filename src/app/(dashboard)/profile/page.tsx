@@ -16,17 +16,14 @@ export default function ProfilePage() {
   const [submitting, setSubmitting] = useState(false);
 
   useEffect(() => {
-    // Read session from layout / api or cookies
-    fetch('/api/dashboard')
-      .then((res) => {
-        if (res.ok) {
-          // fetch products or user
+    fetch('/api/auth/me')
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success && data.user) {
+          setUser(data.user);
         }
       })
       .catch(() => {});
-
-    // Read user from local session storage or api
-    fetch('/api/auth/login', { method: 'OPTIONS' }).catch(() => {});
   }, []);
 
   const handleUpdatePassword = async (e: React.FormEvent) => {
@@ -38,13 +35,11 @@ export default function ProfilePage() {
 
     setSubmitting(true);
     try {
-      // Simulate password change via reset endpoint or api
-      const res = await fetch('/api/auth/reset-password', {
+      const res = await fetch('/api/auth/change-password', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          email: user?.email || 'manager@stocksense.com',
-          otp: '123456', // direct password change
+          currentPassword,
           newPassword,
         }),
       });
